@@ -1,0 +1,16 @@
+services:
+  ocr-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ocr-extractor:latest
+    container_name: ocr-extractor-container
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PORT=8000
+      - WORKERS=4
+      - IS_DEV=true
+    restart: always
